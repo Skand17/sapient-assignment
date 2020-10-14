@@ -8,9 +8,9 @@ function LaunchPrograms() {
   const [year, setYear] = useState('')
   const [launchStatus, setLaunchStatus] = useState('')
   const [landStatus, setLandStatus] = useState('')
+
   useEffect(()=>{
     axios(`https://api.spacexdata.com/v3/launches?limit=100&launch_success=${launchStatus}&land_success=${landStatus}&launch_year=${year}`).then(res => {
-        console.log(res.data)
         setSpacexData(res.data)
     })
   },[year, launchStatus, landStatus])
